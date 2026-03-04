@@ -1,0 +1,101 @@
+#### ----------------------------  ####
+#### Author:  Juliano Palacios Abrantes
+#### Date first created:  Feb 11, 2021
+#### Cescription:
+# This script standarizes the taxon list
+# for the project and creates a csv file
+# to read fom.
+
+#### -------------------------  ####
+#'Update
+#'Juliano Palacios
+#'August, 2025
+#' Following issue 66, included a chunk of code that installs/loads a package 
+#' that is missing. It now requires an embedded function check_pkg.R
+#### -------------------------  ####
+
+
+#### -------------------------  ####
+# STEP 1: Makes sure all packages are installed
+#### -------------------------  ####
+
+source("functions/check_pkg.R")
+check_pkg(
+  c("tibble")
+)
+
+#### -------------------------  ####
+# STEP 2: Function tha creates data
+#### -------------------------  ####
+
+call.taxon.names <- function(x){
+  
+  taxon_correction <- tibble(
+    Species = as.factor(c('Dipturus batis',
+                          "Dipturus flossada",
+                          "Dipturus batis-complex",
+                          "Dipturus intermedia",
+                          "Liparis montagui",
+                          'Liparis liparis',
+                          'Liparis liparis liparis',
+                          'Chelon aurata',
+                          'Chelon ramada',
+                          'Mustelus mustelus/asterias',
+                          'Mustelus',
+                          'Mustelus mustelus',
+                          'Mustelus asterias',
+                          'Alosa',
+                          'Alosa alosa',
+                          'Alosa fallax',
+                          'Argentina',
+                          'Argentinidae',
+                          'Argentina silus',
+                          'Argentina sphyraena',
+                          'Callionymus reticulatus',
+                          'Callionymus maculatus',
+                          'Ciliata mustela',
+                          'Ciliata septentrionalis',
+                          'Gaidropsarus',
+                          'Gaidropsaurus macrophthalmus',
+                          'Gaidropsaurus mediterraneus',
+                          'Gaidropsaurus vulgaris',
+                          'Sebastes',
+                          'Sebastes norvegicus',
+                          'Sebastes mentella',
+                          'Sebastes marinus',
+                          'Syngnathus',
+                          'Syngnathus rostellatus',
+                          'Syngnathus acus',
+                          'Syngnathus typhle',
+                          'Nerophis ophidion',
+                          'Pomatoschistus',
+                          'Pomatoschistus microps',
+                          'Pomatoschistus minutus',
+                          'Pomatoschistus pictus',
+                          'Lesueurigobius',
+                          'Gobius cobitis',
+                          'Gobius niger',
+                          'Leusueurigobius friesii',
+                          'Neogobius melanostomus',
+                          'Neogobius'
+    )),
+    corrected_species = as.factor(c(rep('Dipturus',4),
+                          rep("Liparis",3),
+                          rep('Chelon',2),
+                          rep('Mustelus',4),
+                          rep('Alosa',3),
+                          rep('Argentina',4),
+                          rep('Callionymus',2),
+                          rep('Ciliata',2),
+                          rep('Gaidropsarus',4),
+                          rep("Sebastes",4),
+                          rep('Syngnatus',5),
+                          rep('Pomatoschistus',4),
+                          rep('Gobius',6)
+    )
+  )
+  )
+  
+  return(taxon_correction)
+  
+}     

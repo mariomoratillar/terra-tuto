@@ -99,3 +99,17 @@ sst_monthly_coper <- rast("C:/Users/mario/Desktop/MNCN/CopernicusData/cmems_mod_
 sst_monthly_coper
 
 plot(sst_monthly_coper)
+
+sst_monthly_cropped_masked <- crop(sst_monthly_coper, gbr_boundary, mask = TRUE)
+
+plot(sst_monthly_cropped_masked[[1:4]])
+
+# To show the boundary limits
+plot(sst_monthly_cropped_masked[[1:4]], fun = function(x)lines(gbr_boundary, col="orange", lwd=2))
+
+#How to create an interactive map, we need to have installed the leaflet package
+install.packages("leaflet")
+
+plet(sst_monthly_cropped_masked[[1]])
+
+plet(sst_monthly_cropped_masked[[1]], tiles="Esri.WorldImagery")
